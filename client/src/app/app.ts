@@ -16,7 +16,10 @@ export class App implements OnInit {
 
   ngOnInit(): void {
     this.http.get("https://localhost:5001/api/Members/").subscribe({
-      next: response => this.members.set(response),
+      next: (response) => {
+        this.members.set(response);
+        console.log(this.members());
+      },
       error: error => console.log(error),
       complete:() => console.log("completed the http request")
       
